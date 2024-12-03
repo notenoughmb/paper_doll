@@ -1,0 +1,226 @@
+[gd_scene load_steps=21 format=3 uid="uid://dvjc0omqd6638"]
+
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_0ilso"]
+[ext_resource type="Texture2D" uid="uid://k363gpdvjy7j" path="res://assets/0090b-512x512.webp" id="1_l0ny0"]
+[ext_resource type="Texture2D" uid="uid://dqyssl55l6yef" path="res://assets/NormalMap.png" id="2_r48yi"]
+[ext_resource type="PackedScene" uid="uid://cabgrr2bvykhs" path="res://scenes/spider/spider_bot/spider_bot.tscn" id="3_minuw"]
+[ext_resource type="AudioStream" uid="uid://cxhj4mv4h50gw" path="res://assets/horrorambient1.ogg" id="4_sqiu5"]
+[ext_resource type="AudioStream" uid="uid://d11aobb2t2isd" path="res://assets/creakgroan.ogg" id="4_xeiiu"]
+[ext_resource type="AudioStream" uid="uid://dme0avg37os3l" path="res://assets/metalgroan2.ogg" id="6_k0f00"]
+[ext_resource type="Script" path="res://groan.gd" id="7_uoeye"]
+[ext_resource type="Texture2D" uid="uid://bh0krms8wybmy" path="res://assets/idfk.png" id="10_7ph1y"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t1uo8"]
+random_pitch = 1.5
+streams_count = 2
+stream_0/stream = ExtResource("4_xeiiu")
+stream_1/stream = ExtResource("6_k0f00")
+
+[sub_resource type="Animation" id="Animation_a1dqg"]
+resource_name = "swap"
+length = 10.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_volumetric_fog_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 15.0]
+}
+
+[sub_resource type="Animation" id="Animation_4d6qi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_volumetric_fog_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [30.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v817i"]
+_data = {
+"RESET": SubResource("Animation_4d6qi"),
+"swap": SubResource("Animation_a1dqg")
+}
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_tjqat"]
+vertices = PackedVector3Array(-495.003, 0.437799, -3.49567, -29.0027, 0.437799, -3.49567, -29.0027, 0.437799, -5.49567, -27.5027, 0.437799, -8.49567, -24.2527, 0.437799, -10.2457, -23.0027, 0.437799, -494.996, -495.003, 0.437799, -494.996, -22.7527, 0.437799, -10.2457, -15.0027, 0.437799, -10.2457, -14.7527, 0.437799, -494.996, -10.5027, 0.437799, -8.74567, -9.50272, 0.437799, -6.74567, -7.25272, 0.437799, -7.74567, -13.5027, 0.437799, -10.2457, -7.25272, 0.437799, -494.996, -3.00272, 0.437799, -6.24567, -1.50272, 0.437799, -2.99567, 0.497284, 0.437799, -1.99567, 8.99728, 0.437799, -5.49567, 10.4973, 0.437799, -8.49567, 2.24728, 0.437799, 1.75433, 8.99728, 0.437799, 1.75433, -6.00272, 0.437799, -7.74567, 13.7473, 0.437799, -10.2457, 14.9973, 0.437799, -494.996, 15.2473, 0.437799, -10.2457, 22.9973, 0.437799, -10.2457, 23.2473, 0.437799, -494.996, 29.2473, 0.437799, -5.49567, 29.2473, 0.437799, -3.99567, 494.997, 0.437799, -4.24567, 27.4973, 0.437799, -8.74567, 24.4973, 0.437799, -10.2457, 494.997, 0.437799, -494.996, 29.2473, 0.437799, 3.75433, 494.997, 0.437799, 4.00433, -495.003, 0.437799, 3.25433, -29.0027, 0.437799, 3.25433, 8.99728, 0.437799, 5.25433, -0.00271606, 0.437799, 6.00433, 13.7473, 0.437799, 10.0043, 10.4973, 0.437799, 8.25433, -3.75272, 0.437799, 7.50433, -9.50272, 0.437799, 36.0043, 10.4973, 0.437799, 35.7543, 13.7473, 0.437799, 34.0043, -8.00272, 0.437799, 38.7543, 8.99728, 0.437799, 38.7543, -8.00272, 0.437799, 40.7543, 8.99728, 0.437799, 40.7543, 15.7473, 0.437799, 34.0043, 15.7473, 0.437799, 10.0043, -23.5027, 0.437799, 34.0043, -21.5027, 0.437799, 34.0043, -21.5027, 0.437799, 10.0043, -24.2527, 0.437799, 10.0043, -29.0027, 0.437799, 5.25433, -26.5027, 0.437799, 35.5043, -27.2527, 0.437799, 8.50433, -28.2527, 0.437799, 40.2543, -28.2527, 0.437799, 38.7543, -495.003, 0.437799, 40.0043, -7.00272, 0.437799, 6.00433, -8.75272, 0.437799, 3.00433, -8.75272, 0.437799, 5.25433, -10.2527, 0.437799, 8.25433, -13.5027, 0.437799, 10.0043, -15.5027, 0.437799, 10.0043, -15.5027, 0.437799, 34.0043, -12.7527, 0.437799, 34.0043, 22.4973, 0.437799, 10.0043, 22.4973, 0.437799, 34.0043, 24.4973, 0.437799, 34.0043, 24.4973, 0.437799, 10.0043, 29.2473, 0.437799, 5.25433, 27.4973, 0.437799, 8.50433, 27.4973, 0.437799, 35.5043, 29.2473, 0.437799, 38.7543, 29.2473, 0.437799, 40.2543, 494.997, 0.437799, 40.0043, -495.003, 0.437799, 48.2543, -28.2527, 0.437799, 48.0043, 29.2473, 0.437799, 48.0043, 494.997, 0.437799, 48.2543, -8.00272, 0.437799, 47.5043, 8.99728, 0.437799, 47.5043, 8.99728, 0.437799, 49.5043, -8.00272, 0.437799, 49.5043, 14.9973, 0.437799, 495.004, 15.2473, 0.437799, 54.2543, 13.7473, 0.437799, 54.2543, 10.4973, 0.437799, 52.5043, -9.50272, 0.437799, 52.5043, -12.7527, 0.437799, 54.2543, -14.2527, 0.437799, 54.2543, -14.0027, 0.437799, 495.004, -22.2527, 0.437799, 495.004, -22.0027, 0.437799, 54.2543, -23.5027, 0.437799, 54.2543, -26.7527, 0.437799, 52.5043, -28.2527, 0.437799, 49.5043, -495.003, 0.437799, 495.004, 24.4973, 0.437799, 54.2543, 22.9973, 0.437799, 54.2543, 23.2473, 0.437799, 495.004, 27.4973, 0.437799, 52.7543, 29.2473, 0.437799, 49.5043, 494.997, 0.437799, 495.004)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 2, 0), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(5, 0, 6), PackedInt32Array(5, 7, 4), PackedInt32Array(7, 5, 8), PackedInt32Array(8, 5, 9), PackedInt32Array(12, 11, 10), PackedInt32Array(10, 13, 12), PackedInt32Array(12, 13, 14), PackedInt32Array(14, 13, 9), PackedInt32Array(13, 8, 9), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(18, 15, 19), PackedInt32Array(20, 17, 21), PackedInt32Array(21, 17, 18), PackedInt32Array(22, 12, 19), PackedInt32Array(19, 12, 23), PackedInt32Array(23, 12, 14), PackedInt32Array(23, 14, 24), PackedInt32Array(19, 15, 22), PackedInt32Array(24, 25, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(30, 29, 28), PackedInt32Array(30, 28, 31), PackedInt32Array(31, 32, 30), PackedInt32Array(30, 32, 27), PackedInt32Array(30, 27, 33), PackedInt32Array(32, 26, 27), PackedInt32Array(29, 30, 34), PackedInt32Array(34, 30, 35), PackedInt32Array(0, 1, 36), PackedInt32Array(36, 1, 37), PackedInt32Array(21, 38, 20), PackedInt32Array(20, 38, 39), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 45), PackedInt32Array(42, 45, 44), PackedInt32Array(42, 44, 43), PackedInt32Array(38, 41, 39), PackedInt32Array(39, 41, 42), PackedInt32Array(46, 43, 47), PackedInt32Array(47, 43, 44), PackedInt32Array(47, 49, 46), PackedInt32Array(46, 49, 48), PackedInt32Array(40, 51, 45), PackedInt32Array(45, 51, 50), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(36, 37, 56), PackedInt32Array(52, 57, 55), PackedInt32Array(55, 57, 58), PackedInt32Array(60, 59, 56), PackedInt32Array(56, 59, 61), PackedInt32Array(56, 61, 36), PackedInt32Array(57, 60, 58), PackedInt32Array(58, 60, 56), PackedInt32Array(64, 63, 62), PackedInt32Array(64, 62, 65), PackedInt32Array(65, 62, 42), PackedInt32Array(67, 66, 68), PackedInt32Array(68, 66, 69), PackedInt32Array(65, 42, 66), PackedInt32Array(66, 42, 69), PackedInt32Array(69, 42, 43), PackedInt32Array(73, 72, 70), PackedInt32Array(70, 72, 71), PackedInt32Array(74, 34, 35), PackedInt32Array(73, 75, 72), PackedInt32Array(72, 75, 76), PackedInt32Array(79, 78, 77), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 77), PackedInt32Array(77, 74, 35), PackedInt32Array(77, 35, 79), PackedInt32Array(54, 67, 53), PackedInt32Array(53, 67, 68), PackedInt32Array(51, 70, 50), PackedInt32Array(50, 70, 71), PackedInt32Array(81, 80, 59), PackedInt32Array(59, 80, 61), PackedInt32Array(78, 79, 82), PackedInt32Array(82, 79, 83), PackedInt32Array(48, 49, 84), PackedInt32Array(84, 49, 85), PackedInt32Array(87, 84, 86), PackedInt32Array(86, 84, 85), PackedInt32Array(90, 89, 88), PackedInt32Array(86, 91, 87), PackedInt32Array(87, 91, 92), PackedInt32Array(95, 94, 93), PackedInt32Array(91, 90, 92), PackedInt32Array(92, 90, 93), PackedInt32Array(93, 90, 88), PackedInt32Array(93, 88, 95), PackedInt32Array(98, 97, 96), PackedInt32Array(99, 98, 96), PackedInt32Array(99, 96, 100), PackedInt32Array(100, 96, 80), PackedInt32Array(80, 96, 101), PackedInt32Array(80, 81, 100), PackedInt32Array(104, 103, 102), PackedInt32Array(105, 104, 102), PackedInt32Array(105, 106, 104), PackedInt32Array(104, 106, 83), PackedInt32Array(104, 83, 107), PackedInt32Array(106, 82, 83), PackedInt32Array(97, 94, 96), PackedInt32Array(96, 94, 95), PackedInt32Array(89, 103, 88), PackedInt32Array(88, 103, 104)]
+agent_radius = 5.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1865o"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvf6i"]
+albedo_texture = ExtResource("1_l0ny0")
+normal_enabled = true
+normal_scale = 4.0
+normal_texture = ExtResource("2_r48yi")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdxr1"]
+albedo_texture = ExtResource("10_7ph1y")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b451g"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+sun_curve = 8.652
+
+[sub_resource type="Sky" id="Sky_u344i"]
+sky_material = SubResource("ProceduralSkyMaterial_b451g")
+
+[sub_resource type="Environment" id="Environment_e177s"]
+background_mode = 1
+sky = SubResource("Sky_u344i")
+ambient_light_source = 2
+ambient_light_color = Color(0.270222, 0.270222, 0.270222, 1)
+ambient_light_energy = 0.01
+reflected_light_source = 2
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.5
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_emission_energy = 2.0
+volumetric_fog_anisotropy = 0.4
+
+[node name="Map" type="Node3D"]
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="Groan" type="AudioStreamPlayer3D" parent="Audio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 350, 0)
+stream = SubResource("AudioStreamRandomizer_t1uo8")
+volume_db = 15.0
+unit_size = 35.0
+max_db = 6.0
+autoplay = true
+panning_strength = 3.0
+script = ExtResource("7_uoeye")
+timeout = 30.0
+random_offset = 5.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_sqiu5")
+volume_db = -10.0
+autoplay = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Audio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 348.579, 0)
+light_color = Color(1, 0, 0, 1)
+light_volumetric_fog_energy = 30.0
+omni_range = 380.326
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Audio/OmniLight3D"]
+libraries = {
+"": SubResource("AnimationLibrary_v817i")
+}
+autoplay = "swap"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425293, 0, 0.264259)
+navigation_mesh = SubResource("NavigationMesh_tjqat")
+
+[node name="CSG" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Plane" type="CSGMesh3D" parent="NavigationRegion3D/CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00272894, 0.0214055, 0.00432205)
+use_collision = true
+collision_layer = 3
+mesh = SubResource("PlaneMesh_1865o")
+material = SubResource("StandardMaterial3D_wvf6i")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="NavigationRegion3D/CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.01672, 3.68237, 0)
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="NavigationRegion3D/CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.73823, 0.769324, -2.17144)
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="NavigationRegion3D/CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49611, 0.769324, 1.79262)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9673, 24.4378, 0)
+size = Vector3(10, 50, 10)
+material = SubResource("StandardMaterial3D_hdxr1")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2182, 24.4378, 0)
+size = Vector3(10, 50, 10)
+material = SubResource("StandardMaterial3D_wvf6i")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2182, 24.4378, 44.2423)
+size = Vector3(10, 50, 10)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1655, 24.4378, 44.2423)
+size = Vector3(10, 50, 10)
+
+[node name="Character" parent="." instance=ExtResource("1_0ilso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00636625, 0.0949752, -0.0586287)
+in_air_momentum = false
+sprint_enabled = false
+continuous_jumping = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e177s")
+
+[node name="SpiderBot" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_minuw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.632715, 3.29955, -309.103)
+ground_offset = 2.0
+player = NodePath("../Character")
+
+[node name="Body_2" parent="SpiderBot/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, 0, 0, 0)
+
+[node name="Cylinder" parent="SpiderBot/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.325856, 0, 0, 0, 0, -0.325856, 0, 0.325856, 0, 0, 0.101015, -0.348666)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50613, 2.59902, 0)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.037, 2.26422, -4.53957)
+text = "hii
+welcome to this prototype
+the original idea for this game was that you were a paper doll
+in a city that had been razed by machines and you'd have to find
+something in the city to win the game
+
+you would've had to burn yourself for light, essentially
+sacrificing health for vision
+
+unfortunately i spent all of my dev time
+making a spider (which is on its way while you read!)
+
+click for lighter
+f7 for debug
+esc to exit"
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88942, 2.26422, -4.18932)
+text = "first times:
+using inverse kinematics (thank you crigz for the base!!)
+using any sort of pathfinding algorithm (astar, in this case)
+sound designing
+
+i will probably continue development of this :)"
+
+[editable path="SpiderBot"]

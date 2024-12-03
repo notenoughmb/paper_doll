@@ -1,0 +1,319 @@
+[gd_scene load_steps=15 format=3 uid="uid://8ffwxeymas4d"]
+
+[ext_resource type="PackedScene" uid="uid://bainb36vo1guj" path="res://assets/low_poly_lighter/scene.gltf" id="1_76fbj"]
+[ext_resource type="Script" path="res://scenes/lighter.gd" id="2_2mejk"]
+[ext_resource type="Texture2D" uid="uid://djedikshdwajh" path="res://assets/frame_0_delay-0.1s.png" id="2_60n3r"]
+[ext_resource type="Texture2D" uid="uid://brckfgbnf4dod" path="res://assets/frame_1_delay-0.1s.png" id="3_3w8p7"]
+[ext_resource type="AudioStream" uid="uid://cqeg1i12ujl7c" path="res://assets/zippo-lighter-open-light-close-102817.mp3" id="3_chj65"]
+
+[sub_resource type="Animation" id="Animation_5lgyw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model/2c6f1db1f39f4521a346b88d6a148dfe_fbx/RootNode/Cap:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.35066, 1.5708, -1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_model/2c6f1db1f39f4521a346b88d6a148dfe_fbx/RootNode/Spring:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("flame:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fire light:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vjn8b"]
+resource_name = "close"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model/2c6f1db1f39f4521a346b88d6a148dfe_fbx/RootNode/Cap:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.35066, 1.5708, -1.5708), Vector3(1.56426, 1.5708, -1.57079)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_model/2c6f1db1f39f4521a346b88d6a148dfe_fbx/RootNode/Spring:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("flame:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fire light:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.83,
+"start_offset": 2.78,
+"stream": ExtResource("3_chj65")
+}],
+"times": PackedFloat32Array(0.0333333)
+}
+tracks/4/use_blend = true
+
+[sub_resource type="Animation" id="Animation_8vikc"]
+resource_name = "open"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model/2c6f1db1f39f4521a346b88d6a148dfe_fbx/RootNode/Cap:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.56426, 1.5708, -1.57079), Vector3(-1.35066, 1.5708, -1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sketchfab_model/2c6f1db1f39f4521a346b88d6a148dfe_fbx/RootNode/Spring:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("flame:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fire light:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 3.39,
+"start_offset": 0.29,
+"stream": ExtResource("3_chj65")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/4/use_blend = true
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer3D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 2.1,
+"start_offset": 1.52,
+"stream": ExtResource("3_chj65")
+}],
+"times": PackedFloat32Array(0.433333)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q8wou"]
+_data = {
+"RESET": SubResource("Animation_5lgyw"),
+"close": SubResource("Animation_vjn8b"),
+"open": SubResource("Animation_8vikc")
+}
+
+[sub_resource type="Animation" id="Animation_no7gp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fire light:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.3]
+}
+
+[sub_resource type="Animation" id="Animation_nhy4d"]
+resource_name = "flicker"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fire light:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.3, 0.25, 0.35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mrglv"]
+_data = {
+"RESET": SubResource("Animation_no7gp"),
+"flicker": SubResource("Animation_nhy4d")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgmwi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_60n3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3w8p7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hw4vw"]
+radius = 6.5
+
+[node name="Lighter" node_paths=PackedStringArray("light_area", "close_and_open") instance=ExtResource("1_76fbj")]
+script = ExtResource("2_2mejk")
+light_area = NodePath("Area3D")
+close_and_open = NodePath("Close and Open")
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(0.15, 0, 0, 0, -6.55671e-09, 0.15, 0, -0.15, -6.55671e-09, 0, 0, 0)
+
+[node name="Cap" parent="Sketchfab_model/2c6f1db1f39f4521a346b88d6a148dfe_fbx/RootNode" index="0"]
+transform = Transform3D(-97.5868, 4.36794e-06, -13.1575, 21.8363, 3.95235e-05, -58.8012, -8.73588e-06, 50, 4.76301e-05, -100.359, 121.082, 0)
+
+[node name="Spinny" parent="Sketchfab_model/2c6f1db1f39f4521a346b88d6a148dfe_fbx/RootNode" index="3"]
+transform = Transform3D(30.2761, 0, 0, 0, 30.2761, 3.88642e-06, 0, -2.28578e-06, 51.4771, -19.5767, 194.62, -0.694602)
+
+[node name="Close and Open" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_q8wou")
+}
+
+[node name="Flicker" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_mrglv")
+}
+autoplay = "flicker"
+
+[node name="fire light" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.449785, 0)
+light_color = Color(1, 0.317647, 0.0235294, 1)
+light_energy = 0.3
+light_volumetric_fog_energy = 0.0
+omni_range = 6.5
+
+[node name="flame" type="AnimatedSprite3D" parent="." index="4"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.00279355, 0.407282, 0)
+modulate = Color(1, 1, 1, 0.760784)
+sprite_frames = SubResource("SpriteFrames_jgmwi")
+autoplay = "default"
+frame_progress = 0.628815
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="5"]
+volume_db = -25.0
+bus = &"SFX"
+
+[node name="Area3D" type="Area3D" parent="." index="6"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435391, 0)
+shape = SubResource("SphereShape3D_hw4vw")
