@@ -2,6 +2,7 @@ class_name Lighter
 extends Node3D
 
 signal lighter_toggled(open : bool)
+signal immolation_time(time : float)
 
 var open : bool = true
 

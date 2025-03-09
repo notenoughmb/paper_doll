@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://8ffwxeymas4d"]
 
 [ext_resource type="PackedScene" uid="uid://bainb36vo1guj" path="res://assets/low_poly_lighter/scene.gltf" id="1_76fbj"]
-[ext_resource type="Script" path="res://scenes/lighter.gd" id="2_2mejk"]
+[ext_resource type="Script" uid="uid://yqpprpu0brsl" path="res://scenes/lighter.gd" id="2_2mejk"]
 [ext_resource type="Texture2D" uid="uid://djedikshdwajh" path="res://assets/frame_0_delay-0.1s.png" id="2_60n3r"]
 [ext_resource type="Texture2D" uid="uid://brckfgbnf4dod" path="res://assets/frame_1_delay-0.1s.png" id="3_3w8p7"]
 [ext_resource type="AudioStream" uid="uid://cqeg1i12ujl7c" path="res://assets/zippo-lighter-open-light-close-102817.mp3" id="3_chj65"]
@@ -208,9 +208,9 @@ tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q8wou"]
 _data = {
-"RESET": SubResource("Animation_5lgyw"),
-"close": SubResource("Animation_vjn8b"),
-"open": SubResource("Animation_8vikc")
+&"RESET": SubResource("Animation_5lgyw"),
+&"close": SubResource("Animation_vjn8b"),
+&"open": SubResource("Animation_8vikc")
 }
 
 [sub_resource type="Animation" id="Animation_no7gp"]
@@ -246,8 +246,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mrglv"]
 _data = {
-"RESET": SubResource("Animation_no7gp"),
-"flicker": SubResource("Animation_nhy4d")
+&"RESET": SubResource("Animation_no7gp"),
+&"flicker": SubResource("Animation_nhy4d")
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jgmwi"]
@@ -283,21 +283,21 @@ transform = Transform3D(30.2761, 0, 0, 0, 30.2761, 3.88642e-06, 0, -2.28578e-06,
 
 [node name="Close and Open" type="AnimationPlayer" parent="." index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_q8wou")
+&"": SubResource("AnimationLibrary_q8wou")
 }
 
 [node name="Flicker" type="AnimationPlayer" parent="." index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_mrglv")
+&"": SubResource("AnimationLibrary_mrglv")
 }
 autoplay = "flicker"
 
 [node name="fire light" type="OmniLight3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.449785, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.449785, -0.255355)
 light_color = Color(1, 0.317647, 0.0235294, 1)
 light_energy = 0.3
 light_volumetric_fog_energy = 0.0
-omni_range = 6.5
+omni_range = 1.5
 
 [node name="flame" type="AnimatedSprite3D" parent="." index="4"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.00279355, 0.407282, 0)

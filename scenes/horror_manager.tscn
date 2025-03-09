@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://yveevjj0na6c"]
 
-[ext_resource type="Script" path="res://scenes/horror_manager.gd" id="1_1q322"]
+[ext_resource type="Script" uid="uid://dmmf82ktabjj0" path="res://scenes/horror_manager.gd" id="1_1q322"]
 
 [node name="Horror Manager" type="Node3D"]
 script = ExtResource("1_1q322")

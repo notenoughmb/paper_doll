@@ -1,5 +1,7 @@
 extends Marker3D
 
+signal step_energy
+
 @export var step_target: Node3D
 @export var step_distance: float = 3.0
 
@@ -20,6 +22,7 @@ func step():
 	var half_way = (global_position + step_target.global_position) / 2
 	is_stepping = true
 	step_sound.play()
+	step_energy.emit()
 	
 	var t = get_tree().create_tween()
 	t.tween_property(self, "global_position", half_way + owner.basis.y, 0.1)

@@ -1,21 +1,20 @@
-[gd_scene load_steps=27 format=3 uid="uid://cabgrr2bvykhs"]
+[gd_scene load_steps=25 format=3 uid="uid://cabgrr2bvykhs"]
 
-[ext_resource type="Script" uid="uid://cgk8h2k28fp02" path="res://scenes/spider/spider_bot/start_ik.gd" id="1_n6l5c"]
+[ext_resource type="Script" path="res://scenes/spider/spider_bot/start_ik.gd" id="1_n6l5c"]
 [ext_resource type="PackedScene" uid="uid://b1n5rqw53onuo" path="res://scenes/spider/spider_bot/spider_bot_model.gltf" id="1_vovvw"]
-[ext_resource type="Script" uid="uid://de78h8ay013ne" path="res://scenes/spider/spider_bot/spider_bot.gd" id="2_kfpvc"]
+[ext_resource type="Script" path="res://scenes/spider/spider_bot/spider_bot.gd" id="2_kfpvc"]
 [ext_resource type="AudioStream" uid="uid://cjaaeqg2od4xp" path="res://assets/735590__jacobsteel__circuit-bent-speak-and-math-bent-reclocked-behringer-delay.ogg" id="3_c7foj"]
-[ext_resource type="Script" uid="uid://e10v1dwwloq7" path="res://scenes/spider/spider_bot/step_ray.gd" id="4_8a6ki"]
-[ext_resource type="Script" uid="uid://cbinjv1607s63" path="res://scenes/spider/spider_bot/ik_target.gd" id="4_p25cf"]
+[ext_resource type="Script" path="res://scenes/spider/spider_bot/step_ray.gd" id="4_8a6ki"]
+[ext_resource type="Script" path="res://scenes/spider/spider_bot/ik_target.gd" id="4_p25cf"]
 [ext_resource type="AudioStream" uid="uid://daxfgahkb7brl" path="res://assets/hi-hat-231042.mp3" id="4_viuwo"]
 [ext_resource type="AudioStream" uid="uid://oepl8swo2oth" path="res://assets/545163__xenatra__ctk811-circuitbend-1.wav" id="5_tmqmq"]
-[ext_resource type="Script" uid="uid://dpql0glv1jaby" path="res://scenes/spider/spider_bot/StepTargetContainer.gd" id="5_yguvh"]
+[ext_resource type="Script" path="res://scenes/spider/spider_bot/StepTargetContainer.gd" id="5_yguvh"]
 [ext_resource type="AudioStream" uid="uid://duharmb7l0myq" path="res://assets/545164__xenatra__ctk811-circuitbend-9.wav" id="6_68dyp"]
 [ext_resource type="AudioStream" uid="uid://r2k33j23nw0s" path="res://assets/545165__xenatra__ctk811-circuitbend-8.wav" id="7_62tvx"]
-[ext_resource type="Script" uid="uid://lh1mw04lk6iu" path="res://scenes/spider/spider_bot/light_test.gd" id="8_ugwga"]
 [ext_resource type="Texture2D" uid="uid://c3omik21jvkx7" path="res://assets/Bear_5.webp" id="9_vkk0n"]
-[ext_resource type="Script" uid="uid://dre2kq7e4fxni" path="res://scenes/spider/spider_bot/state_machine.gd" id="13_gvsl0"]
-[ext_resource type="Script" uid="uid://bhffoim2w082c" path="res://scenes/spider/spider_bot/idle.gd" id="14_8blqx"]
-[ext_resource type="Script" uid="uid://tmp556nfheot" path="res://scenes/spider/spider_bot/roaming.gd" id="15_kgm07"]
+[ext_resource type="Script" path="res://scenes/spider/spider_bot/state_machine.gd" id="13_gvsl0"]
+[ext_resource type="Script" path="res://scenes/spider/spider_bot/idle.gd" id="14_8blqx"]
+[ext_resource type="Script" path="res://scenes/spider/spider_bot/roaming.gd" id="15_kgm07"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5x8tb"]
 playback_mode = 1
@@ -38,12 +37,15 @@ emission_enabled = true
 emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 5.14
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahgjw"]
+albedo_color = Color(0.52549, 0.52549, 0.52549, 1)
+
 [sub_resource type="Animation" id="Animation_vch82"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Cylinder/Cylinder/SpotLight3D:rotation")
+tracks/0/path = NodePath("../../SpotLight3D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +62,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Cylinder/Cylinder/SpotLight3D:rotation")
+tracks/0/path = NodePath("../../SpotLight3D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -72,27 +74,20 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oht1n"]
 _data = {
-&"RESET": SubResource("Animation_vch82"),
-&"sweep": SubResource("Animation_3eu6h")
+"RESET": SubResource("Animation_vch82"),
+"sweep": SubResource("Animation_3eu6h")
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tmiaa"]
 height = 100.0
 radius = 5.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahgjw"]
-albedo_color = Color(0.52549, 0.52549, 0.52549, 1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_2v3gg"]
-radius = 3.5
-
-[node name="SpiderBot" node_paths=PackedStringArray("nav_agent", "model", "spotlight") instance=ExtResource("1_vovvw")]
+[node name="SpiderBot" instance=ExtResource("1_vovvw")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("2_kfpvc")
-nav_agent = NodePath("NavigationAgent3D")
-model = NodePath("Armature/Skeleton3D/Body_2")
-spotlight = NodePath("Armature/Skeleton3D/Cylinder/Cylinder/SpotLight3D")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="0"]
+path_height_offset = -2.5
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_point_size = 50.0
@@ -132,36 +127,6 @@ transform = Transform3D(0.325856, 0, 0, 0, 0, -0.325856, 0, 0.325856, 0, 0, 0.10
 
 [node name="Cylinder" parent="Armature/Skeleton3D/Cylinder" index="0"]
 material_override = SubResource("StandardMaterial3D_dg2m1")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Armature/Skeleton3D/Cylinder/Cylinder" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.993173, 0.116654, 0, -0.116654, 0.993173, 0, -0.138326, -0.431791)
-light_color = Color(1, 0, 0, 1)
-shadow_enabled = true
-spot_range = 500.0
-spot_angle = 30.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Armature/Skeleton3D/Cylinder/Cylinder/SpotLight3D" index="0"]
-root_node = NodePath("../../../../Body_2")
-libraries = {
-&"": SubResource("AnimationLibrary_oht1n")
-}
-
-[node name="Long Distance" type="Area3D" parent="Armature/Skeleton3D/Cylinder/Cylinder/SpotLight3D" index="1"]
-collision_layer = 0
-
-[node name="Long Distance" type="CollisionShape3D" parent="Armature/Skeleton3D/Cylinder/Cylinder/SpotLight3D/Long Distance" index="0"]
-transform = Transform3D(0.999762, -0.0218149, 9.53557e-10, 0, -4.37114e-08, -1, 0.0218149, 0.999762, -4.3701e-08, 1.09074, 0, -49.9881)
-shape = SubResource("CylinderShape3D_tmiaa")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Armature/Skeleton3D/Cylinder/Cylinder" index="1"]
-transform = Transform3D(0.439199, 0.0206202, 0.238073, -0.236589, 0.107577, 0.427145, -0.0336067, -0.487855, 0.104252, 0, -0.497877, -0.431368)
-light_color = Color(1, 0, 0, 1)
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-omni_range = 4.3
-omni_attenuation = 2.0
-omni_shadow_mode = 0
-script = ExtResource("8_ugwga")
 
 [node name="Leg" parent="Armature/Skeleton3D" index="2"]
 material_override = SubResource("StandardMaterial3D_ahgjw")
@@ -209,7 +174,6 @@ script = ExtResource("5_yguvh")
 [node name="FrontLeftRay" type="RayCast3D" parent="Armature/StepTargetContainer" index="0" node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.996195, 0.0871557, 4.63889e-10, -0.0868241, 0.992404, -0.0871557, -0.00759612, 0.0868241, 0.996195, -3.13864, 3.06899, -3.09518)
 target_position = Vector3(0, -10, 0)
-collision_mask = 2
 script = ExtResource("4_8a6ki")
 step_target = NodePath("FrontLeftStepTarget")
 
@@ -219,7 +183,6 @@ transform = Transform3D(0.996195, -0.0868241, -0.00759612, 0.0871557, 0.992404, 
 [node name="FrontRightRay" type="RayCast3D" parent="Armature/StepTargetContainer" index="1" node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.996195, -0.0871557, -4.63889e-10, 0.0868241, 0.992404, -0.0871557, 0.00759612, 0.0868241, 0.996195, 3.13673, 3.06899, -3.09518)
 target_position = Vector3(0, -10, 0)
-collision_mask = 2
 script = ExtResource("4_8a6ki")
 step_target = NodePath("FrontRightStepTarget")
 
@@ -229,7 +192,6 @@ transform = Transform3D(0.996195, 0.0868241, 0.00759612, -0.0871557, 0.992404, 0
 [node name="BackLeftRay" type="RayCast3D" parent="Armature/StepTargetContainer" index="2" node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.996195, 0.0871557, -4.63889e-10, -0.0868241, 0.992404, 0.0871557, 0.00759612, -0.0868241, 0.996195, -3.13864, 3.06899, 3.13846)
 target_position = Vector3(0, -10, 0)
-collision_mask = 2
 script = ExtResource("4_8a6ki")
 step_target = NodePath("BackLeftStepTarget")
 
@@ -239,19 +201,40 @@ transform = Transform3D(0.996195, -0.0868241, 0.00759612, 0.0871557, 0.992404, -
 [node name="BackRightRay" type="RayCast3D" parent="Armature/StepTargetContainer" index="3" node_paths=PackedStringArray("step_target")]
 transform = Transform3D(0.996195, -0.0871557, 4.63889e-10, 0.0868241, 0.992404, 0.0871557, -0.00759612, -0.0868241, 0.996195, 3.13673, 3.06899, 3.13846)
 target_position = Vector3(0, -10, 0)
-collision_mask = 2
 script = ExtResource("4_8a6ki")
 step_target = NodePath("BackRightStepTarget")
 
 [node name="BackRightStepTarget" type="Marker3D" parent="Armature/StepTargetContainer/BackRightRay" index="0"]
 transform = Transform3D(0.996195, 0.0868241, -0.00759612, -0.0871557, 0.992404, -0.0868241, 9.31322e-10, 0.0871557, 0.996195, -2.38419e-07, -5.21685, -2.38419e-07)
 
-[node name="Close Distance" type="Area3D" parent="Armature" index="2"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Armature" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.993173, 0.116654, 0, -0.116654, 0.993173, 0.000282519, 0.273558, -0.378309)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+spot_range = 500.0
+spot_angle = 30.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Close Distance" index="0"]
-shape = SubResource("SphereShape3D_2v3gg")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Armature/SpotLight3D" index="0"]
+root_node = NodePath("../../Skeleton3D/Body_2")
+libraries = {
+"": SubResource("AnimationLibrary_oht1n")
+}
 
-[node name="Sprite3D" type="Sprite3D" parent="Armature" index="3"]
+[node name="Long Distance" type="Area3D" parent="Armature/SpotLight3D" index="1"]
+collision_layer = 0
+
+[node name="Long Distance" type="CollisionShape3D" parent="Armature/SpotLight3D/Long Distance" index="0"]
+transform = Transform3D(0.999762, -0.0218149, 9.53557e-10, 0, -4.37114e-08, -1, 0.0218149, 0.999762, -4.3701e-08, 1.09074, 0, -49.9881)
+shape = SubResource("CylinderShape3D_tmiaa")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Armature" index="3"]
+transform = Transform3D(0.162928, 0, 0, 0, 0.162928, 0, 0, 0, 0.162928, 0, 0.256634, -0.460646)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true
+omni_range = 3.0
+omni_attenuation = 2.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Armature" index="4"]
 transform = Transform3D(0.325856, 0, 0, 0, 0.325856, 0, 0, 0, 0.325856, -0.0376631, 0.390232, -0.448495)
 visible = false
 texture = ExtResource("9_vkk0n")
@@ -300,4 +283,4 @@ idle_time_offset = 2.0
 [node name="Roaming" type="Node" parent="Spider State Machine" index="1"]
 script = ExtResource("15_kgm07")
 
-[connection signal="body_entered" from="Armature/Skeleton3D/Cylinder/Cylinder/SpotLight3D/Long Distance" to="." method="_on_detect_player_body_entered"]
+[connection signal="body_entered" from="Armature/SpotLight3D/Long Distance" to="." method="_on_detect_player_body_entered"]

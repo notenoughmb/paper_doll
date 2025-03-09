@@ -1,7 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://sitwbyatsg8n"]
 
-[ext_resource type="AudioStream" uid="uid://dchnqoqk8lkyi" path="res://assets/monster-growl-251374.mp3" id="1_qos01"]
-[ext_resource type="Script" path="res://scenes/horror_sound.gd" id="1_qwqub"]
+[ext_resource type="Script" uid="uid://dijmc48oq0wey" path="res://scenes/horror_sound.gd" id="1_qwqub"]
+
+[sub_resource type="Resource" id="Resource_56tys"]
+metadata/__load_path__ = "res://assets/monster-growl-251374.mp3"
 
 [sub_resource type="Animation" id="Animation_wpui6"]
 resource_name = "one"
@@ -16,7 +18,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 73.3482,
 "start_offset": 0.0,
-"stream": ExtResource("1_qos01")
+"stream": SubResource("Resource_56tys")
 }],
 "times": PackedFloat32Array(1.26667)
 }
@@ -24,7 +26,7 @@ tracks/0/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vvgr4"]
 _data = {
-"one": SubResource("Animation_wpui6")
+&"one": SubResource("Animation_wpui6")
 }
 
 [node name="horror sound" type="AudioStreamPlayer3D"]
